@@ -1,4 +1,5 @@
-# SAMPLE LOGIN APP - implemented through Auth0
+# SAMPLE Login App with autho0, navigation, find nearest location...etc.
+**Note: ** This app is still under development 
 
 ## 1. Install
 
