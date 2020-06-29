@@ -1,5 +1,5 @@
 # SAMPLE Login App with auth0, navigation, find nearest location...etc.
-**Note: ** This app is still under development 
+**Note:** This app is still under development 
 
 ## 1. Install
 
