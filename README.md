@@ -1,4 +1,4 @@
-# SAMPLE Login App with auth0, navigation, find nearest location...etc.
+# Lunch Bot App - Draft
 **Note:** This app is still under development 
 
 ## 1. Install
