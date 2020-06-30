@@ -61,7 +61,7 @@ Run your app on an emulator, simulator, or your own connected device.
 
 - To run the app on iOS run `yarn run ios` or `react-native run-ios`.
 - To run the app on Android run `yarn run android` or `react-native run-ios`.
+- CLI error with linking of react-native vector icons is pretty common, just ignore it.
 
-The first run may take a while to fully launch. Keep an eye out for confirmation windows and watch the terminal for output and results.
-- CLI error with linking of react-native vector icons is pretty common, just ignore it. 
+The first run may take a while to fully launch. Keep an eye out for confirmation windows and watch the terminal for output and results. 
 **Note:** If you get an error about "No bundle URL present" try clicking reload in the app or running `yarn run ios` again. 
