@@ -8,6 +8,8 @@ You need auth0 and react native vector icons. Do the following:
 ```
 yarn add react-native-auth0
 yarn add react-native-vector-icons
+yarn add @react-navigation/stack
+yarn add @react-navigation/native
 ```
 (optional) If you encounter errors try resetting the package manager cache:
 react-native start --reset-cache
