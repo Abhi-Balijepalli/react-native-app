@@ -3,7 +3,7 @@
 
 ## 1. Install
 
-You need auth0 and react native vector icons. Do the following:
+Do the following:
 
 ```
 npm install
