@@ -16,7 +16,7 @@ import Account from './account/Account';
 import Shop from './shop/Shop';
 import Home from './home/Home';
 import Coupon from './coupon/Coupon';
-import Messages from './messages/Messages';
+import Settings from './settings/Settings';
 
 const {height,width} = Dimensions.get('window');
 
@@ -33,15 +33,15 @@ export default class MainScreen extends Component {
 
             {this.state.page===1?<Account/>:null}
 
-            {this.state.page===2?<Messages/>:null}
+            {this.state.page===2?<Shop/>:null}
 
             {this.state.page===3?<Home/>:null}
 
             {this.state.page===4?<Coupon/>:null}
 
-            {this.state.page===5?<Shop/>:null}
+            {this.state.page===5?<Settings/>:null}
 
-            <CurvedNavBar  icons={['account','message-text','home','tag','cart']} 
+            <CurvedNavBar  icons={['account','cart','home','tag','cogs']} 
                 navColor={'orange'}
                 selected = {3}
                 cb={(id)=>{this.setState({page:id})}} //change the parent's state of page 
