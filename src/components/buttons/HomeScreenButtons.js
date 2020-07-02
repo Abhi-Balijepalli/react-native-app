@@ -18,7 +18,7 @@ export default HomeButton = ({ onPress, title }) => (
 
 const styles = StyleSheet.create({
     buttonContainer:{
-        backgroundColor: 'orange',
+        backgroundColor: '#ff542e',
         shadowColor: '#000',
         borderRadius: 20,
         shadowOffset: { width: 0, height: 3 },

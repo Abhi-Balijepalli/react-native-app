@@ -16,6 +16,7 @@ import {
 import Data from './../../../Data/langer.json'
 import BoxContainer from './../../../styling/boxContainer'
 import { color } from 'react-native-reanimated';
+import LangerButton from '../../../components/buttons/LangerButton';
 
 const {height,width} = Dimensions.get('window');
 
@@ -56,16 +57,33 @@ class DeliveryComponents extends Component {
             data={this.state.dataSource}
             renderItem={({item}) => { //currently reading the langer.json, to get different locations
               return (
-                <BoxContainer style = {styles.Container}>
+                /*<BoxContainer style = {styles.Container}>
                   <Text style={styles.content}>{item.location_name}</Text>
                   <Text style = {styles.subContent} >{item.address}.</Text>
-                </BoxContainer>
+                </BoxContainer>*/
+                <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
               )
             }}
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
       )
+    }
+  }
+
+  class RestaurantScreen extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+    render ()
+    {
+        return(
+            <View style={{flex:1}}>
+                <Text style={{fontSize:20,fontWeight:'bold',marginTop:height/2,alignSelf:"center"}}>[restaurant screen]</Text>
+                {/*<Button onPress = { this.props.login._onLogout } title = { 'Log out' }/>*/}
+            </View>
+        )
     }
   }
   const styles = StyleSheet.create(
