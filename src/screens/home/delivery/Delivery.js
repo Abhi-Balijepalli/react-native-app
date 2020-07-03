@@ -57,10 +57,6 @@ class DeliveryComponents extends Component {
             data={this.state.dataSource}
             renderItem={({item}) => { //currently reading the langer.json, to get different locations
               return (
-                /*<BoxContainer style = {styles.Container}>
-                  <Text style={styles.content}>{item.location_name}</Text>
-                  <Text style = {styles.subContent} >{item.address}.</Text>
-                </BoxContainer>*/
                 <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
               )
             }}
@@ -94,7 +90,6 @@ class DeliveryComponents extends Component {
           paddingTop: 1
       },
       Container: {
-        backgroundColor: 'orange',
         height: 80,
         borderRadius: 20
       },
@@ -106,7 +101,7 @@ class DeliveryComponents extends Component {
       subContent: {
         fontSize: 15,
         justifyContent: 'center',
-        color: 'white',
+        color: 'black',
       },
       textStyle:{
         color: '#fff',

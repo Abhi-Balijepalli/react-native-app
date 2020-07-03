@@ -23,3 +23,4 @@ export default class RestaurantScreen extends Component {
         )
     }
 }
+

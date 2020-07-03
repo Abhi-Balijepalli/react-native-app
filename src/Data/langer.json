@@ -2,41 +2,41 @@
     "langer" :
     [
         {
-        "id": 163144,
-        "zip":63011,
+        "id": "163144",
+        "zip":"63101",
         "location_name": "Enterprise Holdings Inc",
-        "address": "2600 S Hanley Rd, St. Louis, MO 63144",
+        "address": "2600 S Hanley Rd, St. Louis, MO 63101",
         "gtb_time": "11:45 AM Every weekday"
     
     },
     {
-        "id": 163368,
-        "zip":63011,
+        "id": "163368",
+        "zip":"63107",
         "location_name": "Master operations Center",
-        "address": "2200 Mastercard Blvd, 63368",
+        "address": "2200 Mastercard Blvd, 63107",
         "gtb_time": "11:45 AM Every weekday"
       
     },
     {
-        "id": 163101,
-        "zip":63011,
+        "id": "163101",
+        "zip":"63043",
         "location_name": "US Bank Plaza",
-        "address": "505 N 7th St #200, St. Louis, MO 63101",
+        "address": "505 N 7th St #200, St. Louis, MO 63043",
         "gtb_time": "11:30 AM Every weekday"
       
     }, {
-        "id": 198052,
-        "zip":98052,
+        "id": "198052",
+        "zip":"63102",
         "location_name": "Master card HQ",
-        "address": "505 N 7th St #200, St. Louis, MO 63101",
+        "address": "505 N 7th St #200, St. Louis, MO 63102",
         "gtb_time": "11:30 AM Every weekday"
       
     },
      {
-        "id": 298052,
-        "zip":98052,
+        "id": "298052",
+        "zip":"63112",
         "location_name": "US Bank Plaza",
-        "address": "505 N 7th St #200, St. Louis, MO 63101",
+        "address": "505 N 7th St #200, St. Louis, MO 63112",
         "gtb_time": "11:30 AM Every weekday"
       
     }

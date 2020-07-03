@@ -5,13 +5,16 @@ import {
     Button,
     StyleSheet,
     Text,
+    Image,
     View
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Auth0 from 'react-native-auth0';
 import MainScreen from './screens/Main';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 //import LoginScreen from './screens/Login';
-
+import LoginButton from './components/buttons/LoginButton'
+import logoPic from './assets/TheLunchBot_logo.png'
 
 var credentials = require('./auth0-configuration');
 const auth0 = new Auth0(credentials);
@@ -82,7 +85,6 @@ class LoginScreen extends Component {
                 Alert.alert('AccessToken: ' + credentials.accessToken);
                 this.setState({ accessToken: credentials.accessToken });
                 this.props.navigation.navigate('Main');
-                this.props.login = this
             })
             .catch(error => console.log(error));
     };
@@ -102,11 +104,13 @@ class LoginScreen extends Component {
     render() {
         let loggedIn = this.state.accessToken === null ? false : true;
         return (
+            <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffd3ad', '#ffac82']} style={styles.linearGradient}>
             <View style = { styles.container }>
-            <Text style = { styles.header }> Welcome, Log in to get started</Text>
-            <Button onPress = { this._onLogin } title = { 'Log In' }/>
-            
-        </View>
+                <Image sytle = {styles.LogoImage} source = { logoPic }/>
+                <LoginButton onPress = { this._onLogin } title = { 'Login / Register' } />
+                <Button color = {'#ff542e'} onPress = { this._onLogin } title = { 'continue as guest' }/> 
+            </View>
+            </LinearGradient>
         )
     }
 }
@@ -116,14 +120,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        backgroundColor: '#F5FCFF'
+        alignItems: 'center',
+    },
+    linearGradient :{
+        flex: 1,
+        justifyContent: 'center',
     },
     header: {
         fontSize: 20,
         alignItems: 'center',
         textAlign: 'center',
         margin: 10
+    },
+    LogoImage: {
+        flex: 1,
+        aspectRatio: 2.5, 
+        resizeMode: 'cover',
     }
 });
 

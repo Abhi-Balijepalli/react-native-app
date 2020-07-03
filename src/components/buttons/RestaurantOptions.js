@@ -1,7 +1,7 @@
-// LangerButton
+// Restaurant Options
 
 import React, { Component } from 'react';
-
+import LinearGradient from 'react-native-linear-gradient';
 import {
     Alert,
     Button,
@@ -30,26 +30,27 @@ const styles = StyleSheet.create({
     buttonContainer:{
         flex: 1,
         backgroundColor: 'white',
-        borderRadius: 20,
-        shadowColor: 'black',
-        shadowOffset: { width: -3, height: 1 },
-        shadowOpacity: 1,
+        borderRadius: 25,
+        shadowColor: '#ff542e',
+        shadowOffset: { width: -5, height: 6 },
+        shadowOpacity: 8,
         shadowRadius: 4,
-        height:100,
+        height:150,
         margin: 20,
-        alignItems: 'center',
+        //alignItems: 'center',
         justifyContent: 'center',
     },
     content:{
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: "500",
-        shadowColor: 'white',
+        shadowColor: 'grey',
         flexDirection:'row',   //<-----
     },
     subContent: {
-      fontSize: 17,
-      color: '#ff542e',
-      fontWeight: "400",
+      fontSize: 15,
+      color: 'grey',
+      justifyContent: 'center',
+      fontWeight: "600",
     },
     textContainer: {
         //justifyContent: 'center',
