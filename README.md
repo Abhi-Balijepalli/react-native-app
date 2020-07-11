@@ -7,7 +7,6 @@ Do the following:
 
 ```
 npm install
-yarn add react-native-auth0
 yarn add react-native-vector-icons
 yarn add @react-navigation/stack
 yarn add @react-navigation/native
