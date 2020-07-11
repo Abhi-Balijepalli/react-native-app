@@ -17,7 +17,7 @@ import Data from './../../../Data/langer.json'
 import BoxContainer from './../../../styling/boxContainer'
 import { color } from 'react-native-reanimated';
 import LangerButton from '../../../components/buttons/LangerButton';
-
+import {SearchBar} from 'react-native-elements';
 const {height,width} = Dimensions.get('window');
 
 export default function DeliveryScreen({ navigation })
@@ -36,6 +36,11 @@ class DeliveryComponents extends Component {
         isLoading: true, //checking is the data is being loaded
         dataSource:[], //to store objects from json data
       };
+
+      state = {
+        search: '',
+      };
+    
     }
     componentDidMount() {
         //setting state
@@ -43,6 +48,9 @@ class DeliveryComponents extends Component {
           isLoading: false,
           dataSource: Data.langer,
         })
+        updateSearch = (search) => {
+          this.setState({search});
+        }
     }
     render() {
       //loading screen 
@@ -51,17 +59,25 @@ class DeliveryComponents extends Component {
           <ActivityIndicator/>
         </View>
       }
+      const {search} = this.state;
       return (
-        <View style = {styles.MainContainer}>
-          <FlatList
-            data={this.state.dataSource}
-            renderItem={({item}) => { //currently reading the langer.json, to get different locations
-              return (
-                <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
-              )
-            }}
-            keyExtractor={(item, index) => index.toString()}
+        <View>
+          <SearchBar
+            placeholder="Type Here..."
+            onChangeText={this.updateSearch}
+            value={search}
           />
+          <View style = {styles.MainContainer}>
+            <FlatList
+              data={this.state.dataSource}
+              renderItem={({item}) => { //currently reading the langer.json, to get different locations
+                return (
+                  <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
+                )
+              }}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          </View>
         </View>
       )
     }
