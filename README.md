@@ -1,4 +1,4 @@
-# Lunch Bot App
+# Lunch Bot App ~ Safety
 **Note:** This app is root backup for GTB bot app
 
 ## 1. Install
