@@ -1,5 +1,5 @@
-# Lunch Bot App - Draft
-**Note:** This app is still under development 
+# Lunch Bot App
+**Note:** This app is root backup for GTB bot app
 
 ## 1. Install
 
