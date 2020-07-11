@@ -24,8 +24,6 @@ cd ios
 pod install
 ```
 
-You should see the `A0Auth0` pod being installed and linked to the sample app.
-
 ### Android applications only
 
 Open the `android/app/src/main/AndroidManifest.xml` file and locate the Intent Filter declaration. You must update the `android:host` property to use your Auth0 Domain from the step above.
