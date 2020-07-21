@@ -17,11 +17,12 @@ import {
 
 import LangerPic from '../../assets/image.png'
 
-export default LangerButton = ({ onPress, location_name, address}) => (
+export default LangerButton = ({ onPress, location_name, address, gtb_time}) => (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer}> 
         <View style = {styles.textContainer}>
         <Text style={styles.content}>{location_name}</Text>
-        <Text style = {styles.subContent} >{address}.</Text>
+        <Text style = {styles.subContent} >{address} </Text>
+        <Text style = {styles.subContent} >{gtb_time} </Text>
         </View>
     </TouchableOpacity>
     );
@@ -29,25 +30,27 @@ export default LangerButton = ({ onPress, location_name, address}) => (
 const styles = StyleSheet.create({
     buttonContainer:{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#f7f6f5',
         borderRadius: 20,
-        shadowColor: 'black',
-        shadowOffset: { width: -3, height: 1 },
+        shadowColor: 'grey',
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 1,
         shadowRadius: 4,
-        height:100,
-        margin: 20,
+        height:80,
+        marginTop: 7,
+        marginHorizontal: 10,
+        marginBottom: 15,
         alignItems: 'center',
         justifyContent: 'center',
     },
     content:{
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: "500",
         shadowColor: 'white',
         flexDirection:'row',   //<-----
     },
     subContent: {
-      fontSize: 17,
+      fontSize: 12,
       color: '#ff542e',
       fontWeight: "400",
     },

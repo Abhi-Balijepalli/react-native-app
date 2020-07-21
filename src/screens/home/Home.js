@@ -7,15 +7,15 @@ import {
     Button,
     StyleSheet,
     Text,
-    Linking,
     Dimensions,
     TouchableOpacity,
     ActivityIndicator,
     FlatList,
     Image,
-    View
+    View,
+    TextInput
 } from 'react-native';
-
+import {SearchBar} from 'react-native-elements';
 
 // screens
 // import DeliveryScreen from './delivery/Delivery';
@@ -40,6 +40,7 @@ export default class Home extends Component {
                     <Stack.Screen name = "Restaurant" component = { RestaurantScreen } />
                 </Stack.Navigator>
             </NavigationContainer>
+            
         )
     }
 }
@@ -56,7 +57,6 @@ function HomeScreen({ navigation })
         </View>
     )
 }
-
 
 function DeliveryScreen({ navigation })
 {
@@ -81,8 +81,22 @@ class DeliveryComponents extends Component {
         this.setState({
           isLoading: false,
           dataSource: Data.langer,
-        })
+        }, () => {
+          // In this block you can do something with new state.
+            this.arrayholder = Data.langer;
+        });
     }
+    searchData = text => {
+      const newData = this.arrayholder.filter(item => {
+        const itemData = item.address.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      this.setState({
+        dataSource: newData,
+        });
+    };
+
     render() {
       //loading screen 
       if(this.state.isLoading) {
@@ -92,19 +106,20 @@ class DeliveryComponents extends Component {
       }
       return (
         <View style = {styles.MainContainer}>
-          
+          <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => this.searchData(text)}
+            autoCorrect={false}
+            placeholder="Enter Address of your Lunchspot" 
+          />
           <FlatList
             data={this.state.dataSource}
             renderItem={({item}) => { //currently reading the langer.json, to get different locations
               return (
-                /*<BoxContainer style = {styles.Container}>
-                  <Text style={styles.content}>{item.location_name}</Text>
-                  <Text style = {styles.subContent} >{item.address}.</Text>
-                </BoxContainer>*/
-                <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => this.props.navigation.navigate('Restaurant', { item }) }/>
+                <LangerButton location_name = {item.location_name} address = {item.address} gtb_time = {item.gtb_time} onPress = { () => this.props.navigation.navigate('Restaurant', { item }) }/>
               )
             }}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(item) => item.toString()}
           />
         </View>
       )
@@ -124,8 +139,22 @@ class DeliveryComponents extends Component {
         this.setState({
         isLoading: false,
         resData: RestaurantsData.restaurants,
-        })
+        },
+        () => {
+          // In this block you can do something with new state.
+            this.arrayholder = RestaurantsData.restaurants;
+        });
       }
+      searchData = text => {
+        const newData = this.arrayholder.filter(item => {
+          const itemData = item.cuisine.toUpperCase();
+          const textData = text.toUpperCase();
+          return itemData.indexOf(textData) > -1;
+        });
+        this.setState({
+          dataSource: newData,
+          });
+      };
       render() {
         //loading screen 
         if(this.state.isLoading) {
@@ -135,12 +164,18 @@ class DeliveryComponents extends Component {
         }
         return (
           <View style = {styles.MainContainer}>
+            <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => this.searchData(text)}
+            autoCorrect={false}
+            placeholder="Search by Restaurant Cuisine" 
+          />
             <FlatList
               data={this.state.resData}
               renderItem={({item}) => { //currently reading the langer.json, to get different locations
                 if (this.props.item.zip == item.gtb_zip) {
                     return (
-                        <RestaurantButton  location_name = {item.rstrnt_name} address = {item.rstrnt_addr} />
+                        <RestaurantButton location_name = {item.rstrnt_name} address = {item.rstrnt_addr} cuisine = {item.cuisine}/>
                       )
                 }
               }}
@@ -155,9 +190,10 @@ class DeliveryComponents extends Component {
   {
       MainContainer:
       {
-          backgroundColor: '#d4fff6',
+          backgroundColor: '#dbe2ff',
           flex: 1,
           paddingTop: 1,
+          margin: 0,
       },
       Container: {
         height: 80,
@@ -179,6 +215,17 @@ class DeliveryComponents extends Component {
         color: '#fff',
         fontSize:22,
         justifyContent: 'center',
+      },
+      textInput: {
+        margin: 9,
+        textAlign: 'center',
+        height: 50,
+        fontSize:20,
+        borderWidth: 1.5,
+        borderColor: 'grey',
+        borderRadius: 12,
+        backgroundColor:'white',
+        color:'#ff542e',
       }
   });
 

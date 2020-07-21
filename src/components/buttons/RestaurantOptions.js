@@ -1,7 +1,6 @@
 // Restaurant Options
 
 import React, { Component } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {
     Alert,
     Button,
@@ -15,16 +14,17 @@ import {
     ImageBackground
 } from 'react-native';
 
-import LangerPic from '../../assets/image.png'
 
-export default LangerButton = ({ onPress, location_name, address}) => (
+export default LangerButton = ({ onPress, location_name, address, cuisine}) => (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer}> 
         <View style = {styles.textContainer}>
         <Text style={styles.content}>{location_name}</Text>
         <Text style = {styles.subContent} >{address}.</Text>
+        <Text style = {styles.CuisineType} > {cuisine}</Text>
         </View>
     </TouchableOpacity>
     );
+
 
 const styles = StyleSheet.create({
     buttonContainer:{
@@ -32,25 +32,34 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 25,
         shadowColor: '#ff542e',
-        shadowOffset: { width: -5, height: 6 },
-        shadowOpacity: 8,
-        shadowRadius: 4,
-        height:150,
-        margin: 20,
-        //alignItems: 'center',
+        shadowOffset: { width: -5, height: 5 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
+        height:110,
+        marginTop: 7,
+        marginHorizontal: 10,
+        marginBottom:30,
+        alignItems: 'center',
         justifyContent: 'center',
     },
     content:{
         fontSize: 20,
         fontWeight: "500",
-        shadowColor: 'grey',
+        shadowColor: '#ffffff',
         flexDirection:'row',   //<-----
     },
     subContent: {
       fontSize: 15,
-      color: 'grey',
+      color: '#808080',
       justifyContent: 'center',
       fontWeight: "600",
+    },
+    CuisineType: {
+        color: '#ff542e',
+        borderRadius: 25,
+        fontWeight: "700",
+        shadowRadius: 4,
+        height:25,
     },
     textContainer: {
         //justifyContent: 'center',

@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import {
     Alert,
-    Button,
     StyleSheet,
     Text,
     Linking,
@@ -12,6 +11,7 @@ import {
     TouchableOpacity,
     FlatList,
     View,
+    TextInput,
 } from 'react-native';
 import Data from './../../../Data/langer.json'
 import BoxContainer from './../../../styling/boxContainer'
@@ -22,11 +22,77 @@ const {height,width} = Dimensions.get('window');
 
 export default function DeliveryScreen({ navigation })
 {
+ 
     return (
-        <View style={{flex:1}}>
-            <DeliveryComponents/>
+        <View>
+          <SearchActivity/>
+          <DeliveryComponents/>
         </View>
     )
+}
+class SearchActivity extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      text: '',
+      data: []
+    }
+    this.arrayholder = [];
+  }
+  componentDidMount() {
+    this.setState({
+      isLoading: false,
+      data: Data.langer,
+    }, () => {
+      this.arrayholder = Data.langer;
+    });
+  }
+  GetFlatListItem(location_name) {
+    Alert.alert(location_name);
+  }
+  searchData(text) {
+    const newData = this.arrayholder.filter(item => {
+    const itemData = item.zip();
+    const textData = location_name.toUpperCase();
+    return itemData.indexOf(textData) > -1
+    });
+  }
+   
+  itemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: .5,
+          width: "100%",
+          backgroundColor: "#000",
+        }}
+      />
+    );
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={{flex: 1, paddingTop: 20}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+ 
+    return (
+ 
+      <View style={styles.MainContainer}>
+ 
+      <TextInput 
+      //  style={styles.textInput}
+       onChangeText={(text) => this.searchData(text)}
+       value={this.state.text}
+       underlineColorAndroid='transparent'
+       placeholder="Search Here" />
+       </View>
+       );
+    }
 }
 class DeliveryComponents extends Component {
     constructor(props) {
@@ -36,11 +102,6 @@ class DeliveryComponents extends Component {
         isLoading: true, //checking is the data is being loaded
         dataSource:[], //to store objects from json data
       };
-
-      state = {
-        search: '',
-      };
-    
     }
     componentDidMount() {
         //setting state
@@ -48,9 +109,6 @@ class DeliveryComponents extends Component {
           isLoading: false,
           dataSource: Data.langer,
         })
-        updateSearch = (search) => {
-          this.setState({search});
-        }
     }
     render() {
       //loading screen 
@@ -59,32 +117,23 @@ class DeliveryComponents extends Component {
           <ActivityIndicator/>
         </View>
       }
-      const {search} = this.state;
       return (
-        <View>
-          <SearchBar
-            placeholder="Type Here..."
-            onChangeText={this.updateSearch}
-            value={search}
+        <View style = {styles.MainContainer}>
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={({item}) => { //currently reading the langer.json, to get different locations
+              return (
+                <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
+              )
+            }}
+            keyExtractor={(item, index) => index.toString()}
           />
-          <View style = {styles.MainContainer}>
-            <FlatList
-              data={this.state.dataSource}
-              renderItem={({item}) => { //currently reading the langer.json, to get different locations
-                return (
-                  <LangerButton location_name = {item.location_name} address = {item.address} onPress = { () => navigation.navigate('Restaurant') }/>
-                )
-              }}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </View>
         </View>
       )
     }
   }
 
   class RestaurantScreen extends Component {
-
     constructor(props) {
         super(props);
     }
@@ -102,8 +151,10 @@ class DeliveryComponents extends Component {
   {
       MainContainer:
       {
-          flex: 1,
-          paddingTop: 1
+        justifyContent: 'center',
+        flex: 1,
+        marginTop: 40,
+        padding: 16,
       },
       Container: {
         height: 80,

@@ -29,7 +29,7 @@ class LoginScreen extends Component {
             <View style = { styles.container }>
                 <Image sytle = {styles.LogoImage} source = { logoPic }/>
                 <LoginButton onPress = { () => this.props.navigation.navigate('Main') } title = { 'Login / Register' } />
-                <Button color = {'#ff542e'} onPress = { () => this.props.navigation.navigate('Main') } title = { 'continue as guest' }/> 
+                <Button color = {'#ff542e'} onPress = { () => this.props.navigation.navigate('Main') } title = { 'Sign Up' }/> 
             </View>
             </LinearGradient>
         )

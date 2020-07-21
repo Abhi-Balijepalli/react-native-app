@@ -39,6 +39,13 @@
         "address": "505 N 7th St #200, St. Louis, MO 63112",
         "gtb_time": "11:30 AM Every weekday"
       
-    }
+    },
+     {
+        "id": "980521",
+        "zip":"98052",
+        "location_name": "Microsoft HQ",
+        "address": "One Microsoft Way Redmond, WA 98052-6399",
+        "gtb_time": "8:00 AM AM Every weekday"
+     }
     ]
 }
