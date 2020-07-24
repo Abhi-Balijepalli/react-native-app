@@ -35,7 +35,7 @@ export default class Home extends Component {
         return(
             <NavigationContainer>
                 <Stack.Navigator>
-                  {/* <Stack.Screen name = "Home" component = { HomeScreen } />*/ }
+                    <Stack.Screen name = "Home" component = { HomeScreen } />
                     <Stack.Screen name = "Delivery" component = { DeliveryScreen } />
                     <Stack.Screen name = "Restaurant" component = { RestaurantScreen } />
                 </Stack.Navigator>
@@ -44,7 +44,7 @@ export default class Home extends Component {
         )
     }
 }
-/*
+
 function HomeScreen({ navigation })
 {
     return (
@@ -57,7 +57,7 @@ function HomeScreen({ navigation })
         </View>
     )
 }
-*/
+
 function DeliveryScreen({ navigation })
 {
     return (

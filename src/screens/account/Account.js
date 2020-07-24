@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import auth from '@react-native-firebase/auth';
 import {
     Alert,
     Button,
@@ -12,13 +13,33 @@ import {
 
 const {height,width} = Dimensions.get('window');
 
-export default class Account extends Component {
-    render ()
-    {
-        return(
-            <View style={{flex:1}}>
-                <Text style={{fontSize:20,fontWeight:'bold',marginTop:height/2,alignSelf:"center"}}>[account]</Text>
+export default class AccountScreen extends React.Component {
+    state = { currentUser: null }
+    componentDidMount() {
+        const { currentUser } = auth();
+        this.setState({ currentUser });
+    }
+    logOut() {
+        auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
+    }
+    render() {
+        const { currentUser } = this.state
+        return (
+            <View style={styles.container}>
+                <Text style={{fontSize:20,fontWeight:'bold',alignSelf:"center"}}>
+                Hi {currentUser && currentUser.email}!
+                </Text>
+                <Button color = {'#ff542e'} onPress = { () => this.logOut() } title = { 'Log out' }/>
             </View>
         )
     }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
