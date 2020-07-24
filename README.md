@@ -11,6 +11,8 @@ yarn add react-native-vector-icons
 yarn add @react-navigation/stack
 yarn add @react-navigation/native
 yarn add react-native-linear-gradient
+yarn add @react-native-firebase/app
+yarn add @react-native-firebase/auth
 ```
 (optional) If you encounter errors try resetting the package manager cache:
 react-native start --reset-cache
