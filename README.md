@@ -13,6 +13,7 @@ yarn add @react-navigation/native
 yarn add react-native-linear-gradient
 yarn add @react-native-firebase/app
 yarn add @react-native-firebase/auth
+yarn add react-native-elements
 ```
 (optional) If you encounter errors try resetting the package manager cache:
 react-native start --reset-cache
@@ -39,11 +40,7 @@ Open the `android/app/src/main/AndroidManifest.xml` file and locate the Intent F
 
 The `applicationId` will get auto-completed dynamically.
 
-## 2. Configure Firebase
-
-
-
-## 3. Run The App
+## 2. Run The App
 
 Run your app on an emulator, simulator, or your own connected device.
 
