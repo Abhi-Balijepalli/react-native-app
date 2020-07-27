@@ -11,8 +11,11 @@ export default function AuthGradient() {
 }
 
 const styles = StyleSheet.create({
-    linearGradient :{
-        flex: 1,
-        justifyContent: 'center',
-    },
+  linearGradient: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 200,
+    width: 415,
+  },
+
 });

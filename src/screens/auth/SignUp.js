@@ -2,7 +2,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth'
-
+import LinearGradient from 'react-native-linear-gradient';
+import AuthButton from '../../components/buttons/AuthButtons';
 
 export default class SignUpScreen extends Component {
   state = { email: '', password: '', confirmpassword: '', errorMessage: null }
@@ -35,6 +36,8 @@ verifyEmail() {
 }
 render() {
     return (
+      <View style={styles.MainContainer}>
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
         <Text>Sign Up</Text>
         {this.state.errorMessage &&
@@ -64,26 +67,40 @@ render() {
           onChangeText={confirmpassword => this.setState({ confirmpassword })}
           value={this.state.confirmpassword}
         />
-        <Button title="Sign Up" onPress={this.SignUp} />
-        <Button
+        <AuthButton title="Sign Up" onPress={this.SignUp} />
+        <AuthButton
           title="Already have an account? Login"
           onPress={() => this.props.navigation.navigate('Login')}
         />
       </View>
+      </LinearGradient>
+      </View>
+      
     )
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  MainContainer: {
     flex: 1,
+  },
+  container: {
     justifyContent: 'center',
     alignItems: 'center'
   },
   textInput: {
+    backgroundColor: '#f0f0f0',
     height: 40,
-    width: '90%',
-    borderColor: 'gray',
+    borderRadius: 10,
+    width: '85%',
+    borderColor: '#ff8838',
+    alignItems: 'center',
     borderWidth: 1,
     marginTop: 8
+  },
+  linearGradient: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 200,
+    width: 415,
   }
 })

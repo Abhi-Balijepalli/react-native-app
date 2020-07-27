@@ -2,6 +2,8 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth';
+import LinearGradient from 'react-native-linear-gradient';
+import AuthButton from '../../components/buttons/AuthButtons'
 
 export default class LoginScreen extends React.Component {
   state = { email: '', password: '', errorMessage: null }
@@ -29,7 +31,10 @@ export default class LoginScreen extends React.Component {
   }
   render() {
     return (
+      <View syte={styles.MainContainer}>
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
+          {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffd3ad', '#ffac82']} style={styles.linearGradient}> */}
         <Text>Login</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -50,26 +55,42 @@ export default class LoginScreen extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
+        <AuthButton title="Login" onPress={this.handleLogin} color="#c7f4ff" />
+        <AuthButton
           title="Don't have an account? Sign Up"
           onPress={() => this.props.navigation.navigate('SignUp')}
         />
+        {/* </LinearGradient> */}
+      </View>
+      </LinearGradient>
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  MainContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems:'center'
+  },
+  container: {
+    paddingTop: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textInput: {
+    backgroundColor: '#f0f0f0',
     height: 40,
-    width: '90%',
-    borderColor: 'gray',
-    borderWidth: 1,
+    width: '85%',
+    borderColor: '#ff8838',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 1.5,
     marginTop: 8
+  },
+  linearGradient: {
+    height: 900,
+    width: 415,
   }
 })
