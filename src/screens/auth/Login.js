@@ -1,9 +1,10 @@
 // Login.js
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button, Alert, Image } from 'react-native'
 import auth from '@react-native-firebase/auth';
 import LinearGradient from 'react-native-linear-gradient';
-import AuthButton from '../../components/buttons/AuthButtons'
+import AuthButton from '../../components/buttons/AuthButtons';
+import LunchBotLogo from '../../assets/TheLunchBot_logo.png';
 
 export default class LoginScreen extends React.Component {
   state = { email: '', password: '', errorMessage: null }
@@ -35,6 +36,9 @@ export default class LoginScreen extends React.Component {
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
           {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffd3ad', '#ffac82']} style={styles.linearGradient}> */}
+          <Image
+          source={LunchBotLogo}
+        />
         <Text style={styles.fontSizes}>Login</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -57,7 +61,7 @@ export default class LoginScreen extends React.Component {
         />
         <AuthButton title="Sign In" onPress={this.handleLogin} color="#c7f4ff" />
         <AuthButton
-          title="New user? Sign Up"
+          title="New user? Register"
           onPress={() => this.props.navigation.navigate('SignUp')}
         />
         {/* </LinearGradient> */}
@@ -74,17 +78,18 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   fontSizes : {
-    fontSize: 25,
+    paddingTop: 30,
+    fontSize: 27,
     fontWeight: "500",
-    paddingBottom: 50,
+    paddingBottom: 10,
   },
   container: {
-    paddingTop: '60%',
+    paddingTop: '20%',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   textInput: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'white',
     height: 50,
     width: '85%',
     borderColor: '#ff8838',
@@ -96,6 +101,6 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     height: 900,
-    width: 415,
+    width: 415
   }
 })

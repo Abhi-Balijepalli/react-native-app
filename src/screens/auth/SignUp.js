@@ -1,9 +1,10 @@
 // SignUp.js
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button, Alert, Image } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import LinearGradient from 'react-native-linear-gradient';
 import AuthButton from '../../components/buttons/AuthButtons';
+import LunchBotLogo from '../../assets/TheLunchBot_logo.png';
 
 export default class SignUpScreen extends Component {
   state = { email: '', password: '', confirmpassword: '', errorMessage: null }
@@ -39,6 +40,9 @@ render() {
       <View style={styles.MainContainer}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
+      <Image
+          source={LunchBotLogo}
+        />
         <Text style={styles.fontSizes}>Register</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -67,7 +71,7 @@ render() {
           onChangeText={confirmpassword => this.setState({ confirmpassword })}
           value={this.state.confirmpassword}
         />
-        <AuthButton title="Sign Up" onPress={this.SignUp} />
+        <AuthButton title="Sign In" onPress={this.SignUp} />
         <AuthButton
           title="Already have an account? Login"
           onPress={() => this.props.navigation.navigate('Login')}
@@ -82,30 +86,33 @@ render() {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems:'center'
+  },
+  fontSizes : {
+    paddingTop: 30,
+    fontSize: 27,
+    fontWeight: "500",
+    paddingBottom: 10,
   },
   container: {
+    paddingTop: '20%',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  fontSizes: {
-    fontSize: 25,
-    fontWeight: "600",
-    paddingBottom: 30,
-  },
   textInput: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'white',
     height: 50,
-    borderRadius: 10,
     width: '85%',
     borderColor: '#ff8838',
+    justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
+    borderRadius: 10,
+    borderWidth: 1.5,
     marginTop: 8
   },
   linearGradient: {
-    flex: 1,
-    justifyContent: 'center',
-    height: 200,
-    width: 415,
+    height: 900,
+    width: 415
   }
 })
