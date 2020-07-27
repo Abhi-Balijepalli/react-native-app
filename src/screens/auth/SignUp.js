@@ -39,7 +39,7 @@ render() {
       <View style={styles.MainContainer}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
-        <Text>Sign Up</Text>
+        <Text style={styles.fontSizes}>Register</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -87,9 +87,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  fontSizes: {
+    fontSize: 25,
+    fontWeight: "600",
+    paddingBottom: 30,
+  },
   textInput: {
     backgroundColor: '#f0f0f0',
-    height: 40,
+    height: 50,
     borderRadius: 10,
     width: '85%',
     borderColor: '#ff8838',

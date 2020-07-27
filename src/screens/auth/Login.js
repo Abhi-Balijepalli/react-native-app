@@ -35,7 +35,7 @@ export default class LoginScreen extends React.Component {
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
           {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffd3ad', '#ffac82']} style={styles.linearGradient}> */}
-        <Text>Login</Text>
+        <Text style={styles.fontSizes}>Login</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -55,9 +55,9 @@ export default class LoginScreen extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <AuthButton title="Login" onPress={this.handleLogin} color="#c7f4ff" />
+        <AuthButton title="Sign In" onPress={this.handleLogin} color="#c7f4ff" />
         <AuthButton
-          title="Don't have an account? Sign Up"
+          title="New user? Sign Up"
           onPress={() => this.props.navigation.navigate('SignUp')}
         />
         {/* </LinearGradient> */}
@@ -73,14 +73,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center'
   },
+  fontSizes : {
+    fontSize: 25,
+    fontWeight: "500",
+    paddingBottom: 50,
+  },
   container: {
-    paddingTop: '80%',
+    paddingTop: '60%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   textInput: {
     backgroundColor: '#f0f0f0',
-    height: 40,
+    height: 50,
     width: '85%',
     borderColor: '#ff8838',
     justifyContent: 'center',
