@@ -5,6 +5,7 @@ import auth from '@react-native-firebase/auth'
 import LinearGradient from 'react-native-linear-gradient';
 import AuthButton from '../../components/buttons/AuthButtons';
 import LunchBotLogo from '../../assets/TheLunchBot_logo.png';
+import LoginButton from '../../components/buttons/LoginButton';
 
 export default class SignUpScreen extends Component {
   state = { email: '', password: '', confirmpassword: '', errorMessage: null }
@@ -43,13 +44,13 @@ render() {
       <Image
           source={LunchBotLogo}
         />
-        <Text style={styles.fontSizes}>Register</Text>
+        <Text style={styles.header}>Register</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
         <TextInput
-          placeholder="Email"
+          placeholder="  Email"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={email => this.setState({ email })}
@@ -57,7 +58,7 @@ render() {
         />
         <TextInput
           secureTextEntry
-          placeholder="Password"
+          placeholder="  Password"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={password => this.setState({ password })}
@@ -65,13 +66,13 @@ render() {
         />
         <TextInput
           secureTextEntry
-          placeholder="Confirm Password"
+          placeholder="  Confirm Password"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={confirmpassword => this.setState({ confirmpassword })}
           value={this.state.confirmpassword}
         />
-        <AuthButton title="Sign In" onPress={this.SignUp} />
+        <LoginButton title="Sign Up" color = "#ff542e" onPress={this.SignUp} />
         <AuthButton
           title="Already have an account? Login"
           onPress={() => this.props.navigation.navigate('Login')}
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center'
   },
-  fontSizes : {
+  header: {
     paddingTop: 30,
     fontSize: 27,
     fontWeight: "500",

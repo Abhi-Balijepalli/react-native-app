@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import {
-    Alert,
-    Button,
     StyleSheet,
     Text,
-    Linking,
-    Dimensions,
     TouchableOpacity,
-    View
 } from 'react-native';
 
-export default HomeButton = ({ onPress, title }) => (
+export default AuthButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
       <Text style = {styles.textForm}>{ title }</Text>
     </TouchableOpacity>
@@ -21,17 +16,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 1,
+        shadowOpacity: 0.5,
         shadowRadius: 3,
-        height: 35,
-        width: 220,
-        marginTop: 15,
+        height: 20,
+        width: 300,
+        marginTop: 10,
+        marginBottom: 0,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flex:0,
     },
     textForm: {
         color: 'white',
         fontWeight: "400",
-        fontSize: 14,
+        fontSize: 15,
     }
 });

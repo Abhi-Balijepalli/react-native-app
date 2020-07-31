@@ -5,15 +5,13 @@ import {
     Button,
     StyleSheet,
     Text,
-    Linking,
     Dimensions,
-    TouchableOpacity,
     View
 } from 'react-native';
 
 const {height,width} = Dimensions.get('window');
 
-export default class AccountScreen extends React.Component {
+export default class AccountScreen extends Component {
     state = { currentUser: null }
     componentDidMount() {
         const { currentUser } = auth();
@@ -24,6 +22,13 @@ export default class AccountScreen extends React.Component {
             .signOut()
             .then(() => console.log('User signed out!'));
     }
+    changePassword(Email)
+    {
+        auth().sendPasswordResetEmail(Email)
+            .then(function (user) {
+                Alert.alert('Password reset link sent!', 'Please check your email.')
+            })
+    }
     render() {
         const { currentUser } = this.state
         return (
@@ -31,6 +36,7 @@ export default class AccountScreen extends React.Component {
                 <Text style={{fontSize:20,fontWeight:'bold',alignSelf:"center"}}>
                 Hi {currentUser && currentUser.email}!
                 </Text>
+                <Button color = {'#ff542e'} onPress = { () => this.changePassword(currentUser.email) } title = { 'Change Password' }/>
                 <Button color = {'#ff542e'} onPress = { () => this.logOut() } title = { 'Log out' }/>
             </View>
         )

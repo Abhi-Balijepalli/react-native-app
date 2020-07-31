@@ -5,6 +5,10 @@ import auth from '@react-native-firebase/auth';
 import LinearGradient from 'react-native-linear-gradient';
 import AuthButton from '../../components/buttons/AuthButtons';
 import LunchBotLogo from '../../assets/TheLunchBot_logo.png';
+import LoginButton from '../../components/buttons/LoginButton';
+import GoogleLoginButton from '../../components/buttons/GoogleLoginButton';
+import DividerLine from '../../components/DividerLine';
+import GoogleAuth from './GoogleAuth';
 
 export default class LoginScreen extends React.Component {
   state = { email: '', password: '', errorMessage: null }
@@ -32,22 +36,23 @@ export default class LoginScreen extends React.Component {
   }
   render() {
     return (
-      <View syte={styles.MainContainer}>
+      <View style={styles.MainContainer}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffb685', '#ff8838']} style={styles.linearGradient}>
       <View style={styles.container}>
           {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#ffecdb', '#ffd3ad', '#ffac82']} style={styles.linearGradient}> */}
           <Image
           source={LunchBotLogo}
         />
-        <Text style={styles.fontSizes}>Login</Text>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
+        <GoogleLoginButton title="Sign in with Google" onPress = {() => GoogleAuth().then(() => console.log('User signed in with gmail'))} />
+        <DividerLine orientation = 'center' textColor = 'white' borderColor = '#EEEEEE'>OR</DividerLine>
         <TextInput
           style={styles.textInput}
           autoCapitalize="none"
-          placeholder="Email"
+          placeholder="  Email"
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
         />
@@ -55,14 +60,16 @@ export default class LoginScreen extends React.Component {
           secureTextEntry
           style={styles.textInput}
           autoCapitalize="none"
-          placeholder="Password"
+          placeholder="  Password"
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <AuthButton title="Sign In" onPress={this.handleLogin} color="#c7f4ff" />
+         <AuthButton title="Forgot Password?" onPress={() => this.props.navigation.navigate('ForgotPass')} color="white" />
+        <LoginButton title = "Sign In" onPress = { this.handleLogin} color = "#ff542e"/>
         <AuthButton
-          title="New user? Register"
+          title="Don't have an account? Sign up"
           onPress={() => this.props.navigation.navigate('SignUp')}
+          color = '#40F1FF'
         />
         {/* </LinearGradient> */}
       </View>
@@ -102,5 +109,5 @@ const styles = StyleSheet.create({
   linearGradient: {
     height: 900,
     width: 415
-  }
+  },
 })
