@@ -14,6 +14,7 @@ yarn add react-native-linear-gradient
 yarn add @react-native-firebase/app
 yarn add @react-native-firebase/auth
 yarn add react-native-elements
+yarn add @react-native-community/google-signin
 ```
 (optional) If you encounter errors try resetting the package manager cache:
 react-native start --reset-cache
