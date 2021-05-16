@@ -1,5 +1,4 @@
-# Lunch Bot App ~ Safety
-**Note:** This app is root backup for GTB bot app
+# React Native App
 
 ## 1. Install
 
